@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface ZoneService {
     public Optional<ZoneEntity> findByZoneID(Long zoneID);
     public List<ZoneEntity> findAllZone();
-    public List<ZoneEntity> findByDistrictZone(Long districtID);
+    public List<ZoneEntity> findByDistrict(Long districtID);
 }

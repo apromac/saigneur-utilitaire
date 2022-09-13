@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ZoneRepository extends JpaRepository<ZoneEntity, Long> {
-
-    List<ZoneEntity> findByDistrictZone(Long districtID);
+    List<ZoneEntity> findByDistrict(Long districtID);
 }

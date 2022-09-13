@@ -19,5 +19,5 @@ public class ZoneEntity {
 
     @ManyToOne
     @JoinColumn(name = "code_district", nullable = false)
-    private DistrictEntity districtZone;
+    private DistrictEntity district;
 }

@@ -28,9 +28,9 @@ public class ZoneController {
     }
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des zones d'un district grace à son ID")
-    @GetMapping(value = "/zone/findByDistrictZone/{districtID}")
+    @GetMapping(value = "/zone/findByDistrict/{districtID}")
     public ResponseEntity<List<ZoneEntity>> recupererZoneParDistrict(@PathVariable long districtID) {
-        List<ZoneEntity> districtZones = zoneService.findByDistrictZone(districtID);
+        List<ZoneEntity> districtZones = zoneService.findByDistrict(districtID);
 
         return new ResponseEntity<>(districtZones, HttpStatus.OK);
     }
