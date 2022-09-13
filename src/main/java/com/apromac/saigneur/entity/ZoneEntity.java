@@ -16,4 +16,8 @@ public class ZoneEntity {
 
     @Column(name = "lib_zone", nullable = false)
     private String libelleZone;
+
+    @ManyToOne
+    @JoinColumn(name = "code_district", nullable = false)
+    private DistrictEntity districtZone;
 }

@@ -27,6 +27,14 @@ public class ZoneController {
         return new ResponseEntity<>(zoneOptional.get(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Méthode permettant de récupérer la liste des zones d'un district grace à son ID")
+    @GetMapping(value = "/zone/findByDistrictZone/{districtID}")
+    public ResponseEntity<List<ZoneEntity>> recupererZoneParDistrict(@PathVariable long districtID) {
+        List<ZoneEntity> districtZones = zoneService.findByDistrictZone(districtID);
+
+        return new ResponseEntity<>(districtZones, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "Méthode permettant de récupérer la liste des zones")
     @GetMapping(value = "/zone/findAllZone")
     public ResponseEntity<List<ZoneEntity>> recupererZones() {

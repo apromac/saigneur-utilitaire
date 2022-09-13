@@ -34,6 +34,21 @@ public class ZoneServiceImpl implements ZoneService {
 
     /**
      *
+     * @param districtID
+     * @return
+     */
+    @Override
+    public List<ZoneEntity> findByDistrictZone(Long districtID) {
+        List<ZoneEntity> districtZones = zoneRepository.findByDistrictZone(districtID);
+
+        if (districtZones.isEmpty())
+            throw new NotFoundException("Désolé, aucune zone disponible pour ce district");
+
+        return districtZones;
+    }
+
+    /**
+     *
      * @return
      */
     @Override
