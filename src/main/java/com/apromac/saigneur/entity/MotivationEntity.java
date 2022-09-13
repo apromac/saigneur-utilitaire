@@ -14,6 +14,6 @@ public class MotivationEntity {
     @Column(name = "id_motivation", updatable = false, nullable = false)
     private Long motivationID;
 
-    @Column(name = "desc_motiv", nullable = false)
+    @Column(name = "desc_motivation", nullable = false)
     private String descriptionMotivation;
 }

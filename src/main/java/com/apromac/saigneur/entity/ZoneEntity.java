@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(schema = "saigneurutilitaire", name = "zone")
+@Table(schema = "saigneurutilitaire", name = "zoneh")
 public class ZoneEntity {
     private static final long serialVersionUID = 1L;
     @Id
