@@ -5,10 +5,12 @@ import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.ZoneRepository;
 import com.apromac.saigneur.service.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ZoneServiceImpl implements ZoneService {
 
     @Autowired

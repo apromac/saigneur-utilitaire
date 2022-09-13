@@ -5,10 +5,12 @@ import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.MotivationRepository;
 import com.apromac.saigneur.service.MotivationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MotivationServiceImpl implements MotivationService {
 
     @Autowired
