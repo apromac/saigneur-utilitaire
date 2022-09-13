@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  docker-saigneur-utilitaire:
+    image: saigneur-utilitaire
+    container_name: msaigneur-utilitaire
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "9004:9004"
+    restart: always
+    depends_on:
+      - docker-saigneur-postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://docker-saigneur-postgres:5432/saigneurutilitairedb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: adminpostgres
