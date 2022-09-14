@@ -17,6 +17,6 @@ public class DistrictEntity {
     @Column(name = "lib_district", nullable = false)
     private String libelleDistrict;
 
-    @Column(name = "abr_district", nullable = false)
-    private String abbreviationDistrict;
+//    @Column(name = "abr_district", nullable = false)
+//    private String abbreviationDistrict;
 }
