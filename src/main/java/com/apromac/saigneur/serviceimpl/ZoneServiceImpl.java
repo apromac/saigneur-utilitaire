@@ -1,7 +1,10 @@
 package com.apromac.saigneur.serviceimpl;
 
+import com.apromac.saigneur.entity.DistrictEntity;
 import com.apromac.saigneur.entity.ZoneEntity;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.exception.NotFoundException;
+import com.apromac.saigneur.repository.DistrictRepository;
 import com.apromac.saigneur.repository.ZoneRepository;
 import com.apromac.saigneur.service.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,8 @@ public class ZoneServiceImpl implements ZoneService {
     @Autowired
     private ZoneRepository zoneRepository;
 
+    @Autowired
+    private DistrictRepository districtRepository;
 
     /**
      *
@@ -39,10 +44,13 @@ public class ZoneServiceImpl implements ZoneService {
      */
     @Override
     public List<ZoneEntity> findByDistrict(Long districtID) {
-        List<ZoneEntity> districtZones = zoneRepository.findByDistrict(districtID);
+        Optional<DistrictEntity> districtOptional = districtRepository.findById(districtID);
+        if (!districtOptional.isPresent())
+            throw new NotFoundException("Désolé, ce district n'existe pas");
 
+        List<ZoneEntity> districtZones = zoneRepository.findByDistrict(districtOptional.get());
         if (districtZones.isEmpty())
-            throw new NotFoundException("Désolé, aucune zone disponible pour ce district");
+            throw new NoContentException("Désolé, aucune zone disponible pour ce district");
 
         return districtZones;
     }
