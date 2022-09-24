@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -22,10 +21,49 @@ public class ZoneController {
     @ApiOperation(value = "Méthode permettant de récupérer une zone grace à son ID")
     @GetMapping(value = "/zone/findByZoneID/{zoneID}")
     public ResponseEntity<ZoneEntity> recupererUneZone(@PathVariable long zoneID) {
-        Optional<ZoneEntity> zoneOptional = zoneService.findByZoneID(zoneID);
+        ZoneEntity zone = zoneService.findByZoneID(zoneID);
 
-        return new ResponseEntity<>(zoneOptional.get(), HttpStatus.OK);
+        return new ResponseEntity<>(zone, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "Méthode permettant de récupérer une zone grace à son ID")
+    @GetMapping(value = "/zone/findByLibelleZone/{libelleZone}")
+    public ResponseEntity<ZoneEntity> recupererUneZone(@PathVariable String libelleZone) {
+        ZoneEntity zone = zoneService.findByLibelleZone(libelleZone);
+
+        return new ResponseEntity<>(zone, HttpStatus.OK);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des zones d'un district grace à son ID")
     @GetMapping(value = "/zone/findByDistrict/{districtID}")

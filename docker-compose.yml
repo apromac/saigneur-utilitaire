@@ -8,16 +8,16 @@ services:
     ports:
       - "9004:9004"
     restart: always
-    networks:
-      - saigneur-network
     depends_on:
       - docker-saigneur-postgres
+      - docker-saigneur-discovery
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://docker-saigneur-postgres:5432/saigneurutilitairedb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: adminpostgres
+    networks:
+      - saigneur-network
 
 networks:
   saigneur-network:
     external: true
-

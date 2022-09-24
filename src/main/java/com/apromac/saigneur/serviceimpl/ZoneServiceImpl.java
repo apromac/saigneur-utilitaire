@@ -28,14 +28,51 @@ public class ZoneServiceImpl implements ZoneService {
      * @return
      */
     @Override
-    public Optional<ZoneEntity> findByZoneID(Long zoneID) {
+    public ZoneEntity findByZoneID(Long zoneID) {
         Optional<ZoneEntity> zoneOptional = zoneRepository.findById(zoneID);
-
         if (!zoneOptional.isPresent())
             throw new NotFoundException("Désolé, la zone désignée n'existe pas");
 
-        return zoneOptional;
+        return zoneOptional.get();
     }
+
+    /**
+     *
+     * @param libelleZone
+     * @return
+     */
+    @Override
+    public ZoneEntity findByLibelleZone(String libelleZone) {
+        ZoneEntity zoneEntity = zoneRepository.findByLibelleZone(libelleZone);
+        if (zoneEntity == null)
+            throw new NotFoundException("Désolé, ");
+
+        return zoneEntity;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      *
@@ -48,11 +85,11 @@ public class ZoneServiceImpl implements ZoneService {
         if (!districtOptional.isPresent())
             throw new NotFoundException("Désolé, ce district n'existe pas");
 
-        List<ZoneEntity> districtZones = zoneRepository.findByDistrict(districtOptional.get());
-        if (districtZones.isEmpty())
+        List<ZoneEntity> zonesDistrict = zoneRepository.findByDistrict(districtOptional.get());
+        if (zonesDistrict.isEmpty())
             throw new NoContentException("Désolé, aucune zone disponible pour ce district");
 
-        return districtZones;
+        return zonesDistrict;
     }
 
     /**
