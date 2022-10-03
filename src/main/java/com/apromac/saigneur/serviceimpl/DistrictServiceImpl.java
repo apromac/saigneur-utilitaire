@@ -1,6 +1,7 @@
 package com.apromac.saigneur.serviceimpl;
 
 import com.apromac.saigneur.entity.DistrictEntity;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.DistrictRepository;
 import com.apromac.saigneur.service.DistrictService;
@@ -42,7 +43,7 @@ public class DistrictServiceImpl implements DistrictService {
         List<DistrictEntity> districts = districtRepository.findAll();
 
         if (districts.isEmpty())
-            throw new NotFoundException("Désolé, aucun district disponible");
+            throw new NoContentException("Désolé, aucun district disponible");
 
         return districts;
     }

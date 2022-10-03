@@ -1,6 +1,7 @@
 package com.apromac.saigneur.serviceimpl;
 
 import com.apromac.saigneur.entity.MotivationEntity;
+import com.apromac.saigneur.exception.NoContentException;
 import com.apromac.saigneur.exception.NotFoundException;
 import com.apromac.saigneur.repository.MotivationRepository;
 import com.apromac.saigneur.service.MotivationService;
@@ -41,7 +42,7 @@ public class MotivationServiceImpl implements MotivationService {
         List<MotivationEntity> motivations = motivationRepository.findAll();
 
         if (motivations.isEmpty())
-            throw new NotFoundException("Désolé, aucune motivation disponible");
+            throw new NoContentException("Désolé, aucune motivation disponible");
 
         return motivations;
     }

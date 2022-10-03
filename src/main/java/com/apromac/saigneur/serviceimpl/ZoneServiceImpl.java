@@ -101,7 +101,7 @@ public class ZoneServiceImpl implements ZoneService {
         List<ZoneEntity> zones = zoneRepository.findAll();
 
         if (zones.isEmpty())
-            throw new NotFoundException("Désolé, aucune zone disponible");
+            throw new NoContentException("Désolé, aucune zone disponible");
 
         return zones;
     }
