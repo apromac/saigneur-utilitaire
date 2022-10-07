@@ -21,6 +21,3 @@ spring:
       uri: http://${config.server.hostname}:${config.server.port}
       #      profile: dev
       profile: prod
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
