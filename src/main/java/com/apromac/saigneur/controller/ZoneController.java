@@ -26,6 +26,7 @@ public class ZoneController {
         return new ResponseEntity<>(zone, HttpStatus.OK);
     }
 
+
     @ApiOperation(value = "Méthode permettant de récupérer une zone grace à son ID")
     @GetMapping(value = "/zone/findByLibelleZone/{libelleZone}")
     public ResponseEntity<ZoneEntity> recupererUneZone(@PathVariable String libelleZone) {
@@ -35,36 +36,6 @@ public class ZoneController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @ApiOperation(value = "Méthode permettant de récupérer la liste des zones d'un district grace à son ID")
     @GetMapping(value = "/zone/findByDistrict/{districtID}")
     public ResponseEntity<List<ZoneEntity>> recupererZoneParDistrict(@PathVariable long districtID) {
@@ -72,6 +43,36 @@ public class ZoneController {
 
         return new ResponseEntity<>(districtZones, HttpStatus.OK);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @ApiOperation(value = "Méthode permettant de récupérer la liste des zones")
     @GetMapping(value = "/zone/findAllZone")
