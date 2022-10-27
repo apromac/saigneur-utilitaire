@@ -18,34 +18,34 @@ public class DistrictServiceImpl implements DistrictService {
     private DistrictRepository districtRepository;
 
 
-    /**
-     *
-     * @param districtID
-     * @return
-     */
-    @Override
-    public Optional<DistrictEntity> findByDistrictID(Long districtID) {
-        Optional<DistrictEntity> districtOptional = districtRepository.findById(districtID);
-
-        if (!districtOptional.isPresent())
-            throw new NotFoundException("Désolé, le district désigné n'existe pas");
-
-        return districtOptional;
-    }
-
 
     /**
-     *
+     * Methode permettant de récupérer la liste des districts
      * @return
      */
     @Override
     public List<DistrictEntity> findAllDistrict() {
         List<DistrictEntity> districts = districtRepository.findAll();
-
         if (districts.isEmpty())
             throw new NoContentException("Désolé, aucun district disponible");
 
         return districts;
     }
 
+
+    /**
+     * Méthode permettant de récupérer un district grace à son ID
+     * @param districtID
+     * @return
+     */
+    public DistrictEntity findByDistrictID(Long districtID) {
+        Optional<DistrictEntity> districtOptional = districtRepository.findById(districtID);
+        if (!districtOptional.isPresent())
+            throw new NotFoundException("Désolé, le district désigné n'existe pas");
+
+        return districtOptional.get();
+    }
+
 }
+
+

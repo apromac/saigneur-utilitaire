@@ -22,45 +22,18 @@ public class ZoneServiceImpl implements ZoneService {
     @Autowired
     private DistrictRepository districtRepository;
 
-    /**
-     *
-     * @param zoneID
-     * @return
-     */
-    @Override
-    public ZoneEntity findByZoneID(Long zoneID) {
-        Optional<ZoneEntity> zoneOptional = zoneRepository.findById(zoneID);
-        if (!zoneOptional.isPresent())
-            throw new NotFoundException("Désolé, la zone désignée n'existe pas");
-
-        return zoneOptional.get();
-    }
-
-    /**
-     *
-     * @param libelleZone
-     * @return
-     */
-    @Override
-    public ZoneEntity findByLibelleZone(String libelleZone) {
-        ZoneEntity zoneEntity = zoneRepository.findByLibelleZone(libelleZone);
-        if (zoneEntity == null)
-            throw new NotFoundException("Désolé, ");
-
-        return zoneEntity;
-    }
 
 
     /**
-     *
-     * @param districtID
+     * Méthode permettant de récupérer la liste des zones héveicoles en fonction de l'ID du district
+     * @param districtID representant l'ID du district
      * @return
      */
     @Override
     public List<ZoneEntity> findByDistrict(Long districtID) {
         Optional<DistrictEntity> districtOptional = districtRepository.findById(districtID);
         if (!districtOptional.isPresent())
-            throw new NotFoundException("Désolé, ce district n'existe pas");
+            throw new NotFoundException("Désolé, aucun district correspondant à celui-ci.");
 
         List<ZoneEntity> zonesDistrict = zoneRepository.findByDistrict(districtOptional.get());
         if (zonesDistrict.isEmpty())
@@ -69,18 +42,57 @@ public class ZoneServiceImpl implements ZoneService {
         return zonesDistrict;
     }
 
-    /**
-     *
-     * @return
-     */
-    @Override
-    public List<ZoneEntity> findAllZone() {
-        List<ZoneEntity> zones = zoneRepository.findAll();
-
-        if (zones.isEmpty())
-            throw new NoContentException("Désolé, aucune zone disponible");
-
-        return zones;
-    }
-
 }
+
+
+
+//    /**
+//     *
+//     * @param zoneID
+//     * @return
+//     */
+//    @Override
+//    public ZoneEntity findByZoneID(Long zoneID) {
+//        Optional<ZoneEntity> zoneOptional = zoneRepository.findById(zoneID);
+//        if (!zoneOptional.isPresent())
+//            throw new NotFoundException("Désolé, la zone désignée n'existe pas");
+//
+//        return zoneOptional.get();
+//    }
+//
+//    /**
+//     *
+//     * @param libelleZone
+//     * @return
+//     */
+//    @Override
+//    public ZoneEntity findByLibelleZone(String libelleZone) {
+//        ZoneEntity zoneEntity = zoneRepository.findByLibelleZone(libelleZone);
+//        if (zoneEntity == null)
+//            throw new NotFoundException("Désolé, ");
+//
+//        return zoneEntity;
+//    }
+//
+//
+//    /**
+//     *
+//     * @param districtID
+//     * @return
+//     */
+//    @Override
+//
+//
+//    /**
+//     *
+//     * @return
+//     */
+//    @Override
+//    public List<ZoneEntity> findAllZone() {
+//        List<ZoneEntity> zones = zoneRepository.findAll();
+//
+//        if (zones.isEmpty())
+//            throw new NoContentException("Désolé, aucune zone disponible");
+//
+//        return zones;
+//    }

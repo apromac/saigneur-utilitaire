@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface ZoneRepository extends JpaRepository<ZoneEntity, Long> {
     List<ZoneEntity> findByDistrict(DistrictEntity district);
-    ZoneEntity findByLibelleZone(String libelleZone);
 }
+
+//    ZoneEntity findByLibelleZone(String libelleZone);
