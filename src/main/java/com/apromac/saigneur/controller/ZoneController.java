@@ -19,15 +19,26 @@ public class ZoneController {
     private ZoneService zoneService;
 
 
-    @ApiOperation(value = "Méthode permettant de récupérer la liste des zones héveicoles en fonction d'un district")
-    @GetMapping(value = "/zone/district/{districtID}")
-    public ResponseEntity<List<ZoneEntity>> recupererZoneParDistrict(@PathVariable long districtID) {
-        List<ZoneEntity> districtZones = zoneService.findByDistrict(districtID);
 
-        return new ResponseEntity<>(districtZones, HttpStatus.OK);
+
+    @ApiOperation(value = "Méthode permettant de récupérer la liste des zones héveicoles en fonction du libelle du district")
+    @GetMapping(value = "/zone/district/{libelleDistrict}")
+    public ResponseEntity<List<ZoneEntity>> recupererZoneParDistrict(@PathVariable String libelleDistrict) {
+        List<ZoneEntity> zonesDistrict = zoneService.findByLibelleDistrict(libelleDistrict);
+
+        return new ResponseEntity<>(zonesDistrict, HttpStatus.OK);
     }
 
 }
+
+
+//    @ApiOperation(value = "Méthode permettant de récupérer la liste des zones héveicoles en fonction d'un district")
+//    @GetMapping(value = "/zone/district/{districtID}")
+//    public ResponseEntity<List<ZoneEntity>> recupererZoneParDistrict(@PathVariable long districtID) {
+//        List<ZoneEntity> districtZones = zoneService.findByDistrict(districtID);
+//
+//        return new ResponseEntity<>(districtZones, HttpStatus.OK);
+//    }
 
 
 //
@@ -48,9 +59,6 @@ public class ZoneController {
 //        return new ResponseEntity<>(zone, HttpStatus.OK);
 //    }
 //
-//
-
-
 //
 //    @ApiOperation(value = "Méthode permettant de récupérer la liste des zones")
 //    @GetMapping(value = "/zone/findAllZone")

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ZoneServiceImpl implements ZoneService {
@@ -25,17 +24,17 @@ public class ZoneServiceImpl implements ZoneService {
 
 
     /**
-     * Méthode permettant de récupérer la liste des zones héveicoles en fonction de l'ID du district
-     * @param districtID representant l'ID du district
+     * Méthode permettant de récupérer la liste des zones héveicoles en fonction du nom du district
+     * @param libelleDistrict Chaine de caractère (String) representant le nom du district
      * @return
      */
     @Override
-    public List<ZoneEntity> findByDistrict(Long districtID) {
-        Optional<DistrictEntity> districtOptional = districtRepository.findById(districtID);
-        if (!districtOptional.isPresent())
-            throw new NotFoundException("Désolé, aucun district correspondant à celui-ci.");
+    public List<ZoneEntity> findByLibelleDistrict(String libelleDistrict) {
+        DistrictEntity districtEntity = districtRepository.findByLibelleDistrict(libelleDistrict);
+        if (districtEntity == null)
+            throw new NotFoundException("Désolé, aucun district correspondant");
 
-        List<ZoneEntity> zonesDistrict = zoneRepository.findByDistrict(districtOptional.get());
+        List<ZoneEntity> zonesDistrict = zoneRepository.findByDistrict(districtEntity);
         if (zonesDistrict.isEmpty())
             throw new NoContentException("Désolé, aucune zone disponible pour ce district");
 
@@ -45,6 +44,27 @@ public class ZoneServiceImpl implements ZoneService {
 }
 
 
+
+
+
+//    /**
+//     * Méthode permettant de récupérer la liste des zones héveicoles en fonction de l'ID du district
+//     * @param districtID representant l'ID du district
+//     * @return
+//     */
+//    @Override
+//    public List<ZoneEntity> findByDistrict(Long districtID) {
+//        Optional<DistrictEntity> districtOptional = districtRepository.findById(districtID);
+//        if (!districtOptional.isPresent())
+//            throw new NotFoundException("Désolé, aucun district correspondant à celui-ci.");
+//
+//        List<ZoneEntity> zonesDistrict = zoneRepository.findByDistrict(districtOptional.get());
+//        if (zonesDistrict.isEmpty())
+//            throw new NoContentException("Désolé, aucune zone disponible pour ce district");
+//
+//        return zonesDistrict;
+//    }
+//
 
 //    /**
 //     *
