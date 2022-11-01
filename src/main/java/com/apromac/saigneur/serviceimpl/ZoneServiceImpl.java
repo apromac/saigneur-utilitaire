@@ -41,6 +41,21 @@ public class ZoneServiceImpl implements ZoneService {
         return zonesDistrict;
     }
 
+
+    /**
+     * Methode permettant de récupérer la liste des toutes les zones héveicoles
+     * @return
+     */
+    @Override
+    public List<ZoneEntity> findAllZone() {
+        List<ZoneEntity> zones = zoneRepository.findAll();
+
+        if (zones.isEmpty())
+            throw new NoContentException("Désolé, aucune zone disponible");
+
+        return zones;
+    }
+
 }
 
 

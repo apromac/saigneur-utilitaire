@@ -13,6 +13,11 @@ public interface ZoneService {
      */
     public List<ZoneEntity> findByLibelleDistrict(String libelleDistrict);
 
+    /**
+     * Methode permettant de récupérer la liste de toutes les zones héveicoles
+     * @return
+     */
+    public List<ZoneEntity> findAllZone();
 }
 
 

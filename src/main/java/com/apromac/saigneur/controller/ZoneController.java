@@ -29,6 +29,16 @@ public class ZoneController {
         return new ResponseEntity<>(zonesDistrict, HttpStatus.OK);
     }
 
+
+
+    @ApiOperation(value = "Méthode permettant de récupérer la liste des zones")
+    @GetMapping(value = "/zone/findAllZone")
+    public ResponseEntity<List<ZoneEntity>> recupererZones() {
+        List<ZoneEntity> zones = zoneService.findAllZone();
+
+        return new ResponseEntity<>(zones, HttpStatus.OK);
+    }
+
 }
 
 
